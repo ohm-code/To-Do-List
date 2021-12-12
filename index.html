@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel='stylesheet' href='style.css'> 
+    <script src='testFunctions.js' defer></script>
+
+</head>
+<body>
+    <div class='container'>
+        <div class = 'header'> Header Top Space Holder</div> 
+        <div class = 'subHeader'>
+            <button></button>
+            <button></button>
+            <button></button>
+        </div>
+        <div class = 'contentContainer'>
+            <div class = 'projectList'>
+                <h2>Project: </h2>     
+
+            </div>
+            <div class = 'taskContainer'>
+                <div class = 'taskList'>
+                    <h2>Task: </h2>
+                    <ul>task1</ul>
+                    <ul>task2</ul>
+                    <ul>task3</ul>
+                    <ul>task4</ul>
+                </div>
+                <div class = 'taskDetails'>
+                    <h2>Task Name: Random Name</h2> 
+             
+                </div>
+            </div>
+        </div>
+    </div>
+    <form id='addTask'>
+        <label for ='task'>Task:</label>
+        <input type ='text' id ='task'>
+        <label for = 'projectDropDown'>Project: </label> 
+        <select id = 'projectDropDown'>
+
+        </select>
+        <label for='priority'>Priority: </label>
+        <select id = 'priority'>
+            <option value = "priority1">Low</option>
+            <option value = "priority2">High</option>
+        </select>
+        <label for ='date'>Due Date: </label>
+        <input type ='text' id ='date'>
+        <label for ='details'>Details: </label>
+        <input type ='text' id ='details'>
+        <input type = 'submit'></submit>
+    </form>
+</body>
+</html>

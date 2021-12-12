@@ -1,0 +1,77 @@
+body{
+    height: 100vh;
+    width:100 vw;
+}
+
+.header{
+    background-color: brown; 
+    height: 30px;   
+    border-style:solid;
+    border-color: rgba(0, 0, 0, 0.274);
+}
+h2{
+    margin-left: 1rem; 
+}
+.container{
+    display:flex;
+    flex-direction: column;
+}
+.contentContainer{
+    display: flex;
+    flex: 1; 
+    background-color: burlywood;
+}
+.projectList{
+    width: 10rem; 
+    background-color:rgba(255, 255, 255, 0.603);
+    border-style:solid;
+    border-color: rgba(0, 0, 0, 0.1); 
+    border-width: 1em;
+}
+.taskContainer{
+    display: flex; 
+    flex:5;
+    justify-content: stretch; 
+}
+.taskList{
+    width: 7rem; 
+    flex:1;
+    background-color:rgba(255, 255, 255, 0.603);
+    border-style:solid;
+    border-color: rgba(0, 0, 0, 0.1); 
+    border-width: 1em;
+    
+}
+.taskDetails{
+    flex:2;  
+    background-color:rgba(255, 255, 255, 0.603);
+    border-style:solid;
+    border-color: rgba(0, 0, 0, 0.1); 
+    border-width: 1em; 
+}
+.subHeader button{  
+    width: 4rem;
+    height: 2rem; 
+}
+.subHeader{
+    margin:1rem;  
+}
+form{
+    display: inline-block;
+    position: absolute;
+    visibility:visible;
+    left: 45%;    
+    width: auto;
+    background-color: white;
+    border-style: double;
+    padding: 50px;
+    padding-top: 5px;
+    padding-bottom: 20px;  
+}
+input, label{
+    display:flex;
+    justify-content: space-between;
+}
+#submit{
+    display: inline-block;
+}
