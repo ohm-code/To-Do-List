@@ -2,12 +2,37 @@ body{
     height: 100vh;
     width:100 vw;
 }
-
+#taskHeader{
+    margin-left: 2rem;
+}
 .header{
     background-color: brown; 
     height: 30px;   
     border-style:solid;
     border-color: rgba(0, 0, 0, 0.274);
+}
+.taskDetails ul{
+    margin-left: 2rem;
+
+}
+strong{
+    margin-left:1.5rem;
+}
+br{
+    white-space: pre;
+}
+#addProject{
+    position: absolute;
+    display: none; 
+    left: 1rem; 
+    top: 7rem;   
+
+}
+#addTask{
+    position: absolute;
+    display: none;   
+    left: 1rem;
+    top: 7rem;
 }
 h2{
     margin-left: 1rem; 
