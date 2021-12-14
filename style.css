@@ -6,14 +6,16 @@ body{
 .header{
     display:flex;
     flex: 1 1 auto;
-    justify-content:left ;
-    background-color: rgba(165, 42, 42, 0.404); 
-    height: 1rem;   
+    justify-content:left ; 
+    background-image: linear-gradient(180deg, rgba(212, 28, 212, 0.657),rgba(206, 87, 87, 0.938));                  
+    height: 1rem;    
     padding: 1rem;
     border-style:solid;
     border-color: rgba(0, 0, 0, 0.274);
     font-size: xx-large;
     border-bottom: none;
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
 }
 
 
@@ -25,7 +27,7 @@ justify-self: center;
     display: flex;
     border-style:solid;
     border-color: rgba(0, 0, 0, 0.274);
-    background-color: rgba(165, 42, 42, 0.404); 
+    background-color: rgba(206, 87, 87, 0.938);  
     border-top: none;
     padding-left:1.5rem;
     padding-top:1rem;
@@ -41,8 +43,8 @@ ul{
     display: flex;
     justify-content: space-between;
     background: linear-gradient(5deg, transparent, white);
-    border-top: solid 1px rgba(128, 128, 128, 0.226);
-    border-bottom: solid 1px rgba(128, 128, 128, 0.061);
+    border-top: solid 1px ;
+    border-bottom: solid 1px ;
 
 }
 strong{
@@ -74,36 +76,40 @@ h2{
 .contentContainer{
     display: flex;
     flex: 1; 
-    background-color: burlywood;
+    
 }
 .projectList{
-    width: 10rem; 
-    background-color:rgba(255, 255, 255, 0.603);
+    width: 10rem;  
+}
+#projectListContainer{
+     background-color: rgba(255, 197, 38, 0.322);
+     border: 1em solid rgba(163, 152, 152, 0.226);
+     border-bottom-left-radius:1em;  
 }
 .taskContainer{
     display: flex; 
     flex:5;
-    justify-content: stretch; 
+    justify-content: stretch;
 }
 .taskList{
     width: 7rem; 
     flex:1;
-    background-color:rgba(255, 255, 255, 0.603);
-    border-style:solid;
-    border-color: rgba(0, 0, 0, 0.1); 
-    border-width: 1em;
+    border: 1em solid rgba(163, 152, 152, 0.226);
 }
 .taskList ul{
     padding-inline-start: 5px;
 
 }
 
+.formButtons{
+    margin-top: 5px;
+    display: flex;
+}
+
 .taskDetails{
     flex:2;  
-    background-color:rgba(255, 255, 255, 0.603);
-    border-style:solid;
-    border-color: rgba(0, 0, 0, 0.1); 
-    border-width: 1em; 
+    border: 1em solid rgba(163, 152, 152, 0.226);
+    border-bottom-right-radius:1em; 
 }
 .subHeader button{  
     width: 4rem;

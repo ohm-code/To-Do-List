@@ -15,6 +15,8 @@ const createTaskButton = document.getElementById('createTask')
 const createProjectButton = document.getElementById('createProject')
 const projectListContainer = document.getElementById('projectListContainer')
 const menuButton = document.getElementById('menu')
+let closeTaskFormButton = document.getElementById('closeForm')
+let closeProjectFormButton = document.getElementById('closeForm2')
 let menuHide = false;
 
 menuButton.addEventListener('click', ()=>{
@@ -24,6 +26,19 @@ menuButton.addEventListener('click', ()=>{
         projectListContainer.style.display = "none";
     }else projectListContainer.style.display = "block";
 })
+
+closeTaskFormButton.addEventListener('click', (event) => {
+    event.preventDefault()
+    event.stopPropagation()
+    addTaskForm.style.display ="none";
+    
+})
+closeProjectFormButton.addEventListener('click', (event) => {
+    event.preventDefault()
+    event.stopPropagation()
+    addProjectForm.style.display = "none";
+})
+
 const createTask = (task, project,priority,dueDate,details)=>{ // need to see if date should be changed to dateobject
     return{
             task, project, priority, dueDate, details
@@ -131,8 +146,9 @@ const markComplete= (taskObject, indexOfTaskDetailsInProject)=>{
     console.log('markcomplete start')
 
     let nextTaskDetails;
-    let thisTaskDetails = document.querySelector('.taskDetails')
-    let taskIndex = indexOfTask(taskObject.task, "task",getProjectObject(taskObject.project));//store current task index
+    let thisTaskDetails = document.querySelector('.taskDetails');
+    let projectObject = getProjectObject(taskObject.project);
+    let taskIndex = indexOfTask(taskObject.task, "task",projectObject);//store current task index
 
     if (projectListObject[taskObject.project].length>0){
         nextTaskDetails = createTaskNode(projectListObject[taskObject.project][1])//task details index 1
@@ -154,6 +170,7 @@ const markComplete= (taskObject, indexOfTaskDetailsInProject)=>{
         nextTaskDetails = createTaskNode(projectListObject[taskObject.project][0])
         changeNode(thisTaskDetails,nextTaskDetails)
     }
+    updateTaskListNode(projectObject);
     console.log('mark complete end') 
 }
 
@@ -248,7 +265,8 @@ const createTaskNode = (taskObject) => { //input task object, output task node
             markComplete(taskObject,indexOfTask(taskObject.task,"task",getProjectObject(taskObject.project)));
         }) 
         //
-        taskNode.appendChild(markCompleteButton) 
+        if (projectNameRef != 'Completed')
+        {taskNode.appendChild(markCompleteButton)}
     
         markCompleteButton.textContent = "Mark as Completed"
 
@@ -315,7 +333,8 @@ const createTaskListNode = (project) => {
     let node = document.createElement('div');
     node.className = 'taskList';
     let header = document.createElement('h2')
-    header.textContent = "Tasks: "
+
+    header.textContent = project[0].project ;
     header.style.display = 'inline-block';
     node.appendChild(header)
  
@@ -359,6 +378,12 @@ const createTaskListNode = (project) => {
                 checkbox.type = 'checkbox';
                 checkbox.name = task.task
                 checkbox.id = task.task + "id";  
+                checkbox.addEventListener('click', ()=>{
+                    console.log("checkbox click function trigger")
+                    markComplete(task,index);
+                    
+                })
+
             taskNode.prepend(checkbox)
             node.appendChild(taskNode)
             taskNode.appendChild(button)
@@ -492,10 +517,8 @@ const renderPage = () =>{
                 }
             
             }) 
-        }
-    }
-    )
-
+        }} )
+    updateTaskListNode(projectListObject.Unassigned)
     }
 
      
