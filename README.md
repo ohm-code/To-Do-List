@@ -25,4 +25,5 @@ Upcoming:
 
 Known bugs:
 - certain entry values (operands and others) will break app
+- on mobile, menu button is causing header issues. Sometimes hiding/changing to none
 
