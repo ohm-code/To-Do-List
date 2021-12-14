@@ -265,8 +265,8 @@ const createTaskNode = (taskObject) => { //input task object, output task node
             markComplete(taskObject,indexOfTask(taskObject.task,"task",getProjectObject(taskObject.project)));
         }) 
         //
-        if (projectNameRef != 'Completed')
-        {taskNode.appendChild(markCompleteButton)}
+  
+        
     
         markCompleteButton.textContent = "Mark as Completed"
 
@@ -284,7 +284,7 @@ const createTaskNode = (taskObject) => { //input task object, output task node
             { element.style.background = 'grey'})
         }) 
         editTaskDetailsButton.textContent = "Edit"
-        taskNode.appendChild(editTaskDetailsButton)
+        
         
     let saveButton = document.createElement('button') 
         saveButton.style.display = 'none'; 
@@ -305,7 +305,7 @@ const createTaskNode = (taskObject) => { //input task object, output task node
                 dueDate: updateTaskDetails[3].textContent,
                 details: updateTaskDetails[4].textContent
             };  
-            
+            let index
             
             removeTask(taskNode,getProjectObject(projectNameRef))
             addTaskProject(taskObject,getProjectObject(projectNameRef)) 
@@ -313,7 +313,7 @@ const createTaskNode = (taskObject) => { //input task object, output task node
             changeNode(taskList,createTaskListNode(getProjectObject(projectNameRef)) )
         })
 
-        taskNode.appendChild(saveButton)// change to only display if edit is click
+      // change to only display if edit is click
         
     let removeTaskButton = document.createElement('button')//**add functionality */
         removeTaskButton.addEventListener('click',(event)=>{
@@ -324,7 +324,11 @@ const createTaskNode = (taskObject) => { //input task object, output task node
             changeNode(taskList, createTaskListNode(getProjectObject(projectNameRef)))
         })// * remove from project object *do  change node 
         removeTaskButton.textContent='Delete Task'
-        taskNode.appendChild(removeTaskButton)
+        taskNode.prepend(removeTaskButton)
+        taskNode.prepend(editTaskDetailsButton)
+        taskNode.prepend(saveButton)
+        if (projectNameRef != 'Completed')
+        {taskNode.prepend(markCompleteButton)}
         
     return taskNode;
 }
@@ -383,7 +387,7 @@ const createTaskListNode = (project) => {
                     markComplete(task,index);
                     
                 })
-
+            
             taskNode.prepend(checkbox)
             node.appendChild(taskNode)
             taskNode.appendChild(button)
