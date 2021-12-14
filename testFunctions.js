@@ -14,8 +14,16 @@ let taskDetails = document.querySelector('.taskDetails')
 const createTaskButton = document.getElementById('createTask')
 const createProjectButton = document.getElementById('createProject')
 const projectListContainer = document.getElementById('projectListContainer')
+const menuButton = document.getElementById('menu')
+let menuHide = false;
 
-
+menuButton.addEventListener('click', ()=>{
+    menuHide = !menuHide;
+    console.log(menuHide);
+    if (menuHide){
+        projectListContainer.style.display = "none";
+    }else projectListContainer.style.display = "block";
+})
 const createTask = (task, project,priority,dueDate,details)=>{ // need to see if date should be changed to dateobject
     return{
             task, project, priority, dueDate, details
@@ -155,47 +163,57 @@ const createTaskNode = (taskObject) => { //input task object, output task node
     let projectObject = getProjectObject(projectNameRef) //set as project object for placeholder comparison
     const p = document.createElement('p');
     let taskNode = document.createElement('div')
+    let name 
+    let project
+    let nameD
+    let projectD
+    let priority
+    let priorityD
+    let dueD
+    let due
+    let details
+    let detailsD
     taskNode.className = 'taskDetails';
     taskNode.id = 'taskDetailsHeader'
     
     if (taskObject.task != projectObject[0].task){
-        let nameD = document.createElement('h2');
+         nameD = document.createElement('h2');
             nameD.textContent = "Task: "
             
-        let projectD = document.createElement('strong');
+         projectD = document.createElement('strong');
             projectD.textContent = "Project: ";
             
-        let priorityD = document.createElement('strong');
+         priorityD = document.createElement('strong');
             priorityD.textContent = "Priority: ";
         
-        let dueD = document.createElement('strong'); // change to dateobject
+         dueD = document.createElement('strong'); // change to dateobject
             dueD.textContent= "Due Date: ";
             
-        let detailsD = document.createElement('strong');
+         detailsD = document.createElement('strong');
             detailsD.textContent= "Details: ";
         
-        let name = document.createElement('h2');
+            name = document.createElement('h2');
             name.textContent = taskObject.task;
             name.style.marginLeft = '2rem';
             taskNode.appendChild(nameD);
             taskNode.appendChild(name);
             taskNode.appendChild(p);
-        let project = document.createElement('ul');
+         project = document.createElement('ul');
             project.textContent =taskObject.project;
             taskNode.appendChild(projectD)
             taskNode.appendChild(project)
             taskNode.appendChild(p);
-        let priority = document.createElement('ul');
+         priority = document.createElement('ul');
             priority.textContent =taskObject.priority;
             taskNode.appendChild(priorityD);
             taskNode.appendChild(priority);
             taskNode.appendChild(p);
-        let due = document.createElement('ul'); // change to dateobject
+         due = document.createElement('ul'); // change to dateobject
             due.textContent=taskObject.dueDate;
             taskNode.appendChild(dueD)
             taskNode.appendChild(due)
             taskNode.appendChild(p);
-        let details = document.createElement('ul');
+         details = document.createElement('ul');
             details.textContent= taskObject.details;
             taskNode.appendChild(detailsD); 
             taskNode.appendChild(details);
@@ -205,19 +223,19 @@ const createTaskNode = (taskObject) => { //input task object, output task node
                 element.className = 'taskDetailsItem'
             })
         }else{
-            let nameD = document.createElement('h2');
+            nameD = document.createElement('h2');
             nameD.textContent = "Task: "
             
-            let projectD = document.createElement('strong');
+            projectD = document.createElement('strong');
             projectD.textContent = "Project: ";
 
-            let name = document.createElement('h2');
+            name = document.createElement('h2');
             name.textContent = taskObject.task;
             name.style.marginLeft = '2rem';
             taskNode.appendChild(nameD);
             taskNode.appendChild(name);
 
-            let project = document.createElement('ul');
+            project = document.createElement('ul');
             project.textContent =taskObject.project;
             taskNode.appendChild(projectD)
             taskNode.appendChild(project)
@@ -225,18 +243,17 @@ const createTaskNode = (taskObject) => { //input task object, output task node
 
         }
 
-    let markCompleteButton = document.createElement('button')
+        let markCompleteButton = document.createElement('button')
         markCompleteButton.addEventListener('click', ()=>{//**change button color? */
             markComplete(taskObject,indexOfTask(taskObject.task,"task",getProjectObject(taskObject.project)));
         }) 
-      
         //
         taskNode.appendChild(markCompleteButton) 
     
         markCompleteButton.textContent = "Mark as Completed"
 
-    let editTaskDetailsButton = document.createElement('button') //**add functionality
-        editTaskDetailsButton.addEventListener('click', ()=>{
+        let editTaskDetailsButton = document.createElement('button') //**add functionality
+            editTaskDetailsButton.addEventListener('click', ()=>{
             saveButton.style.display = 'inline-block';
             markCompleteButton.style.display = 'none';
             editTaskDetailsButton.style.display = 'none';
@@ -269,7 +286,9 @@ const createTaskNode = (taskObject) => { //input task object, output task node
                 priority: updateTaskDetails[2].textContent,
                 dueDate: updateTaskDetails[3].textContent,
                 details: updateTaskDetails[4].textContent
-            };          
+            };  
+            
+            
             removeTask(taskNode,getProjectObject(projectNameRef))
             addTaskProject(taskObject,getProjectObject(projectNameRef)) 
             let taskList = document.querySelector('.taskList');            
@@ -308,35 +327,39 @@ const createTaskListNode = (project) => {
         }else
          { 
             const button = document.createElement('button');
-            button.textContent = "x";
-            button.addEventListener('click',(event)=>{
-                event.preventDefault();
-                event.stopPropagation()
-                taskNode.remove()
-                removeTask(task,project)    
-                projectListObject[task.project] = project;
-                console.log(project)
-                console.log("debug taskdetails") //task object should be removed and not present in project
-                if( project.length >1){
-                    console.log("projectlength >1 caught")
+                button.textContent = "x";
+                button.addEventListener('click',(event)=>{
+                    event.preventDefault();
+                    event.stopPropagation()
+                    taskNode.remove()
+                    removeTask(task,project)    
+                    projectListObject[task.project] = project;
                     console.log(project)
-                    updateTaskDetails(project[1])// update task details
-                }else {
-                    console.log("project lenge =1 condition")
-                    console.log(project[0])
-                    updateTaskDetails(project[0]); // just changed to project for testi
-                }
-             });//remove from project array as well
+                    console.log("debug taskdetails") //task object should be removed and not present in project
+                    if( project.length >1){
+                        console.log("projectlength >1 caught")
+                        console.log(project)
+                        updateTaskDetails(project[1])// update task details
+                    }else {
+                        console.log("project lenge =1 condition")
+                        console.log(project[0])
+                        updateTaskDetails(project[0]); // just changed to project for testi
+                    }
+                });//remove from project array as well
+               
              let taskNode = document.createElement('ul')
              taskNode.addEventListener('click',(event)=>{
-                 
                  taskDetails = document.querySelector('.taskDetails') 
                  changeNode(taskDetails,createTaskNode(task)) 
              })
              taskNode.className = task.task;
              taskNode.textContent = task.task;
-              
              
+            let checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.name = task.task
+                checkbox.id = task.task + "id";  
+            taskNode.prepend(checkbox)
             node.appendChild(taskNode)
             taskNode.appendChild(button)
             }

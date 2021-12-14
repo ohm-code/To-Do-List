@@ -4,10 +4,32 @@ body{
 }
 
 .header{
-    background-color: brown; 
-    height: 30px;   
+    display:flex;
+    flex: 1 1 auto;
+    justify-content:left ;
+    background-color: rgba(165, 42, 42, 0.404); 
+    height: 1rem;   
+    padding: 1rem;
     border-style:solid;
     border-color: rgba(0, 0, 0, 0.274);
+    font-size: xx-large;
+    border-bottom: none;
+}
+
+
+.header span{
+justify-self: center;
+}
+
+.subHeader{
+    display: flex;
+    border-style:solid;
+    border-color: rgba(0, 0, 0, 0.274);
+    background-color: rgba(165, 42, 42, 0.404); 
+    border-top: none;
+    padding-left:1.5rem;
+    padding-top:1rem;
+    padding-bottom:0.5rem;
 }
 .taskDetails ul{
     margin-left: 2rem;
@@ -57,9 +79,6 @@ h2{
 .projectList{
     width: 10rem; 
     background-color:rgba(255, 255, 255, 0.603);
-    border-style:solid;
-    border-color: rgba(0, 0, 0, 0.1); 
-    border-width: 1em;
 }
 .taskContainer{
     display: flex; 
@@ -73,8 +92,12 @@ h2{
     border-style:solid;
     border-color: rgba(0, 0, 0, 0.1); 
     border-width: 1em;
-    
 }
+.taskList ul{
+    padding-inline-start: 5px;
+
+}
+
 .taskDetails{
     flex:2;  
     background-color:rgba(255, 255, 255, 0.603);
@@ -84,10 +107,7 @@ h2{
 }
 .subHeader button{  
     width: 4rem;
-    height: 2rem; 
-}
-.subHeader{
-    margin:1rem;  
+    height: 1.5rem; 
 }
 form{
     display: inline-block;
@@ -108,3 +128,19 @@ input, label{
 #submit{
     display: inline-block;
 }
+.box-shadow-menu {
+    position: relative;
+    padding-left: 1.25em;
+  }
+  .box-shadow-menu:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.25em;
+    width: 1em;
+    height: 0.15em;
+    background: black;
+    box-shadow: 
+      0 0.25em 0 0 black,
+      0 0.5em 0 0 black;
+  }
